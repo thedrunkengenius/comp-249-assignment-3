@@ -180,14 +180,20 @@ public class CellList implements Cloneable {
         }
         return counter;
     }
-    public boolean contains(CellPhone cellPhone) {
-        if (find(cellPhone) != null) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+    	public boolean contains(long serial) {
+		CellNode current = head;
+		while (current != null) {
+			current = current.next;
+			if (current == null) {
+				return false;
+			} else {
+				if (current.getCellPhone().getSerialNumber() == serial) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
     public void showContents () {
         CellNode temp = head;
         if (temp == null) {
