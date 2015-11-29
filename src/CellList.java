@@ -188,20 +188,29 @@ public class CellList implements Cloneable {
             return false;
         }
     }
-    public void showContents () {
-        CellNode temp = head;
-        if (temp == null) {
-            System.out.println("This list is empty. Nothing to display.");
-        }
-        else {
-            System.out.println("Here are the contents of the list: ");
-            while (temp != null) {
-                System.out.println("[" + temp.cellPhone + "] ---> ");
-                temp = temp.next;
-            }
-            System.out.println("X");
-        }
-    }
+    	public void showContents() {
+		int counter = 0;
+		CellNode temp = head;
+		StringBuilder builder = new StringBuilder();
+		if (temp == null) {
+			System.out.println("This list is empty. Nothing to display.");
+		} else {
+			System.out.println("Here are the contents of the list: ");
+			builder.append("The current size of the list is " + size() + ". Here are the contesnts of the list\n");
+			builder.append("======================================================================\n");
+			while (temp != null) {
+				builder.append("[" + temp.getCellPhone() + "] ---> ");
+				temp = temp.next;
+				if (counter == 2) {
+					builder.append("\n");
+					counter = 0;
+				}
+				counter++;
+			}
+			builder.append("X");
+			System.out.println(builder);
+		}
+	}
     private CellNode find(CellPhone cellPhone) {
         CellNode temp = head;
         while (temp != null) {
