@@ -202,16 +202,16 @@ public class CellList implements Cloneable {
             System.out.println("X");
         }
     }
-    private CellNode find(CellPhone cellPhone) {
-        CellNode temp = head;
-        while (temp != null) {
-            if (temp.cellPhone.equals(cellPhone)) {
-                return temp;
-            }
-            temp = temp.next;
-        }
-        return null;
-    }
+ 	private CellNode find(long serial) {
+		CellNode temp = head;
+		while (temp != null) {
+			if (temp.cellPhone.getSerialNumber()==serial) {
+				return temp;
+			}
+			temp = temp.next;
+		}
+		return null;
+	}
     private CellNode copyList(CellNode cn) {
         CellNode temp = cn;
         CellNode newHead = null;
